@@ -18,22 +18,22 @@ function modExp(base, exponent, modulus) {
 const p = 23n
 const g = 5n
 
-// deborah's private and public keys
-const debSec = 6n
-const debPub = modExp(g, debSec, p)
+// ruth's private and public keys
+const ruthSec = 6n
+const ruthPub = modExp(g, ruthSec, p)
 
-// gideon's private and public keys
-const gidSec = 15n
-const gidPub = modExp(g, gidSec, p)
+// mark's private and public keys
+const markSec = 15n
+const markPub = modExp(g, markSec, p)
 
 // shared secret calculation
-const sharedDeborah = modExp(gidPub, debSec, p)
-const sharedGideon = modExp(debPub, gidSec, p)
+const sharedRuth = modExp(markPub, ruthSec, p)
+const sharedMark = modExp(ruthPub, markSec, p)
 
-console.log("Shared Secret (Deborah):", sharedDeborah.toString())
-console.log("Shared Secret (Gideon):  ", sharedGideon.toString())
+console.log("Shared Secret (Ruth):", sharedRuth.toString())
+console.log("Shared Secret (Mark):  ", sharedMark.toString())
 
-// ===== Simple "Encryption" using shared secret with xOR =====
+// ===== simple encryption using shared secret with xOR =====
 function encrypt(message, key) {
     return message
         .split("")
@@ -46,11 +46,11 @@ function decrypt(ciphertext, key) {
 }
 
 // messaging demo
-const message = "Hello Gideon!"
-const ciphertext = encrypt(message, sharedDeborah)
-const decrypted = decrypt(ciphertext, sharedGideon)
+const message = "Hello Mark!"
+const ciphertext = encrypt(message, sharedRuth)
+const decrypted = decrypt(ciphertext, sharedMark)
 
 console.log("--- Messaging Demo ---")
-console.log("Deborah sends:", message)
+console.log("Ruth sends:", message)
 console.log("Encrypted over insecure channel:", ciphertext)
-console.log("Gideon decrypts:", decrypted)
+console.log("Mark decrypts:", decrypted)
