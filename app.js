@@ -9,21 +9,21 @@ function modExp(base, exponent, modulus) {
 const p = 23n // small prime for demo
 const g = 5n  // generator
 
-// deborah picks a private key
-const debSec = 6n
-const debPub = modExp(g, debSec, p) // deborah's public value
+// ruth picks a private key
+const ruthSec = 6n
+const ruthPub = modExp(g, ruthSec, p) // ruth's public value
 
-// gideon picks a private key
-const gidSec = 15n
-const gidPub = modExp(g, gidSec, p) // gideon's public value
+// mark picks a private key
+const markSec = 15n
+const markPub = modExp(g, markSec, p) // mark's public value
 
 // exchange and compute shared secret
-const sharedSecretDeborah = modExp(gidPub, debSec, p)
-const sharedSecretGideon = modExp(debPub, gidSec, p)
+const sharedSecretRuth = modExp(markPub, ruthSec, p)
+const sharedSecretMark = modExp(ruthPub, markSec, p)
 
 console.log("Public prime number (p):", p.toString())
 console.log("Generator (g):", g.toString())
-console.log("Deborah private:", debSec.toString(), "Deborah public:", debPub.toString())
-console.log("Gideon private:", gidSec.toString(), "Gideon public:", gidPub.toString())
-console.log("Deborah's shared secret:", sharedSecretDeborah.toString())
-console.log("Gideon's shared secret:", sharedSecretGideon.toString())
+console.log("Ruth's private:", ruthSec.toString(), "Ruth's public:", ruthPub.toString())
+console.log("Mark's private:", markSec.toString(), "Mark's public:", markPub.toString())
+console.log("Ruth's shared secret:", sharedSecretRuth.toString())
+console.log("Mark's shared secret:", sharedSecretMark.toString())
