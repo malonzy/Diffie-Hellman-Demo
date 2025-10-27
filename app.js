@@ -1,8 +1,8 @@
 // simple Diffie-Hellman demonstration in JavaScript
 
 // modular exponentiation function to generate the public keys
-function modExp(base, exponent, modulus) {
-    return base ** exponent % modulus
+function modExp(generator, personalSecret, modulus) {
+    return generator ** personalSecret % modulus
 }
 
 // publicly agreed prime (p) and generator (g)
@@ -27,3 +27,6 @@ console.log("Ruth's private:", ruthSec.toString(), "Ruth's public:", ruthPub.toS
 console.log("Mark's private:", markSec.toString(), "Mark's public:", markPub.toString())
 console.log("Ruth's shared secret:", sharedSecretRuth.toString())
 console.log("Mark's shared secret:", sharedSecretMark.toString())
+
+//how are you --> 8928728asdaca../2/30&6ajslkdja42472039482-90348209348298-   ---> how are you
+//mark                                                                          ruth
